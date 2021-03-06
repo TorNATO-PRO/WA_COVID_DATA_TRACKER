@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import data_grabber as dg
 
 
@@ -6,7 +8,12 @@ def grab_internet_covid_data():
     covid19_wa_url = 'https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus' \
                      '/data-tables/WA_COVID19_Cases_Hospitalizations_Deaths.xlsx'
 
-    dataset = dg.download_file(url=covid19_wa_url, file_format="xlsx", directory="Downloads")
+    file_format = 'xlsx'
+    current_time = datetime.now().strftime("%m-%d-%Y_%H_%M_%S")
+
+    file_name = f'COVID-19_DATA_WASHINGTON_{current_time}.{file_format}'
+
+    dataset = dg.download_file(url=covid19_wa_url, name=file_name, directory='Downloads')
 
 
 # My main method

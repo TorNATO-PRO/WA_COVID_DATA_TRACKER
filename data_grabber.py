@@ -1,4 +1,3 @@
-from datetime import datetime
 from os import getcwd
 from os import mkdir
 from os import path
@@ -8,7 +7,7 @@ import requests
 
 # Grabs the COVID-19 dataset from the Washington
 # State Department of Health website
-def download_file(url, file_format, directory):
+def download_file(url, name, directory):
     # tries to get the requested file, exits if unable to do so
     try:
         requested_file = requests.get(url)
@@ -30,13 +29,9 @@ def download_file(url, file_format, directory):
             print(f'An error has occurred while downloading the file, status code: {requested_file.status_code}')
             return
 
-        current_time = datetime.now().strftime("%m-%d-%Y_%H_%M_%S")
-
-        file_name = f'COVID-19_DATA_WASHINGTON_{current_time}.{file_format}'
-
         file_dir = create_directory(directory)
 
-        file_name_with_directory = path.join(file_dir, file_name)
+        file_name_with_directory = path.join(file_dir, name)
 
         # writes the dataset to a file with the following format
         # COVID-19_DATA_WASHINGTON_mm-dd-YYYY_hh_mm_ss
