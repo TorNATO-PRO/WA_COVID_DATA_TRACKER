@@ -5,9 +5,10 @@ from os import path
 import requests
 
 
-# Grabs the COVID-19 dataset from the Washington
-# State Department of Health website
-def download_file(url, name, directory):
+# Downloads a file from a url, saves it in
+# a specified directory within the working
+# directory with a given name
+def download_file(url, directory, name):
     # tries to get the requested file, exits if unable to do so
     try:
         requested_file = requests.get(url)

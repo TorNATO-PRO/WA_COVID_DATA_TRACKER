@@ -13,12 +13,12 @@ def grab_internet_covid_data():
 
     file_name = f'COVID-19_DATA_WASHINGTON_{current_time}.{file_format}'
 
-    dataset = dg.download_file(url=covid19_wa_url, name=file_name, directory='Downloads')
+    return dg.download_file(url=covid19_wa_url, directory='Downloads', name=file_name)
 
 
 # My main method
 def main():
-    grab_internet_covid_data()
+    dataset = grab_internet_covid_data()
 
 
 # Calls the main method :)
